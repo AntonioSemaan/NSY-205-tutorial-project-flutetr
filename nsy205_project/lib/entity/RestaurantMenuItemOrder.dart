@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:nsy205_project/entity/RestaurantMenuItem.dart';
+import 'RestaurantMenuItem.dart';
+
 
 class RestaurantMenuItemOrder {
   int quantity;

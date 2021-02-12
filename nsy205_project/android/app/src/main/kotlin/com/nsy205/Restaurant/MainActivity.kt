@@ -1,4 +1,4 @@
-package com.example.nsy205_project
+package com.nsy205.Restaurant
 
 import io.flutter.embedding.android.FlutterActivity
 
