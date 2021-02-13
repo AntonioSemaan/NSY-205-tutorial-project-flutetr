@@ -1,0 +1,57 @@
+[
+    {
+        "category":"Appetizers",
+        "items":[
+            {
+                "name":"Chicken Nuggets",
+                "description":"7 pieces nuggets",
+                "price":"3"
+            },
+            {
+                "name":"Onion rings",
+                "description":"Onion rings box served with your favorite sauce",
+                "price":"5"
+            },
+            {
+                "name":"Curly Fries",
+                "description":"Curly fries box topped with your favorite flavor",
+                "price":"4"
+            }
+        ]
+    },
+    {
+        "category":"Platters",
+        "items":[
+            {
+                "name":"Double Cheese Hamburger",
+                "description":"Double smoked patties, fresh onions, tomatoes, mushroom sauce, cheddar cheese, emental cheese, special sauce",
+                "price":"10"
+            },
+            {
+                "name":"Steak",
+                "description":"500g Steak served with boiled vegtables, mashed potatoes, with drizzled mushroom sauce",
+                "price":"15"
+            }
+        ]
+    },
+    {
+        "category":"Drinks",
+        "items":[
+            {
+                "name":"Coca Cola",
+                "description":"355 ml",
+                "price":"0.7"
+            },
+            {
+                "name":"Fanta",
+                "description":"355 ml",
+                "price":"0.7"
+            },
+            {
+                "name":"Sprite",
+                "description":"355 ml",
+                "price":"0.7"
+            }
+        ]
+    }
+]

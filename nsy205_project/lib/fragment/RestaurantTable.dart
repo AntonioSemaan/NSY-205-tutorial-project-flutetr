@@ -1,3 +1,4 @@
+import 'package:Restaurant/layout/MenuPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -18,7 +19,11 @@ class _RestaurantTableState extends State<RestaurantTable>{
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MenuPage()
+          )
+        );
       },
       child: Container(
         height: 150.0,

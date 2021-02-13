@@ -1,7 +1,8 @@
 
-import 'entity/RestaurantMenuItem.dart';
+import 'package:Restaurant/api/ApiMenuManager.dart';
 import 'entity/RestaurantMenuItemOrder.dart';
 
+ApiMenuManager manager = ApiMenuManager();
 Map<int,List<RestaurantMenuItemOrder>> tablesData = Map<int,List<RestaurantMenuItemOrder>>();
-Map<String,List<RestaurantMenuItem>> menu = Map<String,List<RestaurantMenuItem>>();
+List<dynamic> menu = List<dynamic>();
 int tableNumber=0;
