@@ -1,3 +1,4 @@
+import 'package:Restaurant/Globals.dart';
 import 'package:Restaurant/layout/MenuPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,7 +22,7 @@ class _RestaurantTableState extends State<RestaurantTable>{
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => MenuPage()
+            builder: (context) => MenuPage(int.parse(widget.tableNumber))
           )
         );
       },

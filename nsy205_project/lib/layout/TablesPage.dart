@@ -1,3 +1,4 @@
+import 'package:Restaurant/entity/RestaurantMenuItemOrder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -13,15 +14,18 @@ class TablesPage extends StatefulWidget{
 class _TablesPageState extends State<TablesPage>{
 
   dynamic buildWithOrWithoutData(){
-    return tableNumber==0
+    return tablesAmount==0
       ?FutureBuilder(
         future: Future.wait([manager.getTableNumber(context),manager.getMenuData(context)]),
         builder: (BuildContext context,
               AsyncSnapshot<List<dynamic>> snapshot) {
           List<Widget> children;
           if(snapshot.hasData){
-            tableNumber=int.parse(snapshot.data[0]['tables'].toString());
+            tablesAmount=int.parse(snapshot.data[0]['tables'].toString());
             menu = snapshot.data[1];
+            for(int i=1;i<=tablesAmount;i++){
+              tablesData[i] = new Map<int,RestaurantMenuItemOrder>();
+            }
             return Padding(
               padding: EdgeInsets.all(10.0),
               child: GridView.builder(
@@ -31,7 +35,7 @@ class _TablesPageState extends State<TablesPage>{
                   crossAxisSpacing: 10.0,
                   childAspectRatio: (3/2.5),
                 ),
-                itemCount: tableNumber,
+                itemCount: tablesAmount,
                 itemBuilder: (BuildContext context, int index){
                   return RestaurantTable(tableNumber: (index+1).toString(),);
                 }
@@ -82,7 +86,7 @@ class _TablesPageState extends State<TablesPage>{
               crossAxisSpacing: 10.0,
               childAspectRatio: (3/2.5),
             ),
-            itemCount: tableNumber,
+            itemCount: tablesAmount,
             itemBuilder: (BuildContext context, int index){
               return RestaurantTable(tableNumber: (index+1).toString(),);
             }
