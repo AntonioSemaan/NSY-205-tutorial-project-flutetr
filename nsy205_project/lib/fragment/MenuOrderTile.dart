@@ -32,6 +32,12 @@ class _MenuOrderTileState extends State<MenuOrderTile>{
         child: GestureDetector(
           onTap: (){
             setState(() {
+              if(tablesData[widget.tableNumber].containsKey(widget.menuItemOrder.item.id)){
+                tablesData[widget.tableNumber][widget.menuItemOrder.item.id].quantity++;
+              }
+              else{
+                tablesData[widget.tableNumber][widget.menuItemOrder.item.id] = RestaurantMenuItemOrder(1, widget.menuItemOrder.item);
+              }
               widget.quantity++;
             });
           },
