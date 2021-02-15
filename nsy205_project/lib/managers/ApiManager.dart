@@ -3,7 +3,7 @@
 import 'package:Restaurant/Globals.dart';
 
 class ApiManager {
-  String serverHostIp = "192.168.16.9:5000";
+  String serverHostIp = "192.168.16.9:5000";  //change this to the server ip 
 
   dynamic get(String urlPath) async {
     Uri uri = Uri.http(serverHostIp, urlPath);
