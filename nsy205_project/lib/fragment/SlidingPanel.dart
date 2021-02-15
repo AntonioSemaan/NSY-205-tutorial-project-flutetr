@@ -3,10 +3,13 @@ import 'package:Restaurant/entity/RestaurantMenuItemOrder.dart';
 import 'package:Restaurant/fragment/MenuOrderTile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class SlidingPanel extends StatefulWidget{
   int tableNumber;
-  SlidingPanel(this.tableNumber);
+  PanelController panelController;
+
+  SlidingPanel(this.tableNumber,this.panelController);
 
   @override
   _SlidingPanelState createState() => _SlidingPanelState();
@@ -36,8 +39,35 @@ class _SlidingPanelState extends State<SlidingPanel>{
   @override
   Widget build(BuildContext context) {
     
-    return Container(
-      child: Column(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Text("Pay"),
+        onPressed: () async {
+          if(tablesData[widget.tableNumber].values.length>0){
+            double total=0.0;
+            tablesData[widget.tableNumber].values.forEach((element) {
+              total += (element.item.price*element.quantity);
+            });
+            AlertDialog alert = AlertDialog(
+              content: Text("Your total is "+ total.toString()+"\$"),
+              
+            );
+            showDialog(
+              context: context,
+              builder: (BuildContext context){
+                return alert;
+              },
+            ).then(
+              (value) async {
+                await widget.panelController.close();
+              } 
+            );
+            tablesData[widget.tableNumber] =  Map<int,RestaurantMenuItemOrder>();
+            menuDataChanged.trigger();
+          }
+        }
+      ),
+      body: Column(
         children: [
           Padding(
             padding: EdgeInsets.only(top:15,bottom: 15),

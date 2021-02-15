@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:Restaurant/entity/RestaurantMenuItemOrder.dart';
+import 'package:Restaurant/layout/SettingsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -16,12 +19,12 @@ class _TablesPageState extends State<TablesPage>{
   dynamic buildWithOrWithoutData(){
     return tablesAmount==0
       ?FutureBuilder(
-        future: Future.wait([manager.getTableNumber(context),manager.getMenuData(context)]),
+        future: Future.wait([apiRepo.apiMenuManager.getTableNumber(),apiRepo.apiMenuManager.getMenuData()]),
         builder: (BuildContext context,
               AsyncSnapshot<List<dynamic>> snapshot) {
           List<Widget> children;
           if(snapshot.hasData){
-            tablesAmount=int.parse(snapshot.data[0]['tables'].toString());
+            tablesAmount=int.parse(snapshot.data[0]['tables']);
             menu = snapshot.data[1];
             for(int i=1;i<=tablesAmount;i++){
               tablesData[i] = new Map<int,RestaurantMenuItemOrder>();
@@ -103,19 +106,25 @@ class _TablesPageState extends State<TablesPage>{
           "Tables"
         ),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {
-
-              },
-              child: Icon(
-                Icons.settings
-              ),
-            )
-          )
-        ],
+        // actions: <Widget>[
+        //   Padding(
+        //     padding: EdgeInsets.only(right: 20.0),
+        //     child: GestureDetector(
+        //       onTap: () {
+        //         Navigator.of(context).push(
+        //           MaterialPageRoute(
+        //             builder: (BuildContext context){
+        //               return SettingsPage();
+        //             }
+        //           )
+        //         );
+        //       },
+        //       child: Icon(
+        //         Icons.settings
+        //       ),
+        //     )
+        //   )
+        // ],
       ),
       body: buildWithOrWithoutData(),
     );

@@ -8,7 +8,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class MenuPage extends StatefulWidget{
   int tableNumber;
-  PanelController panelController = PanelController();
 
   //SlidingUpPanel slidingUpPanel = 
 
@@ -19,6 +18,9 @@ class MenuPage extends StatefulWidget{
 }
 
 class _MenuPageState extends State<MenuPage>{
+
+  PanelController panelController = PanelController();
+
   @override
   Widget build(BuildContext context) {
     
@@ -39,12 +41,12 @@ class _MenuPageState extends State<MenuPage>{
         ),
         body: SlidingUpPanel(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-          controller: widget.panelController,
+          controller:panelController,
           backdropEnabled: true,
-          collapsed:GestureDetector(
+          collapsed:InkWell(
             onTap: () async {
-              if(!widget.panelController.isPanelOpen)
-                await widget.panelController.open();
+              if(panelController.isPanelClosed)
+                await panelController.open();
             },
             child: Container(
               decoration: BoxDecoration(
@@ -62,7 +64,7 @@ class _MenuPageState extends State<MenuPage>{
           panel: Center(
             child: Padding(
               padding: EdgeInsets.all(20),
-              child:SlidingPanel(widget.tableNumber),
+              child:SlidingPanel(widget.tableNumber,panelController),
             )
             // child: Padding(
             //   padding: EdgeInsets.only(top: 20,left: 10,bottom: 10,right: 10),
