@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:Restaurant/entity/RestaurantMenuItemOrder.dart';
-import 'package:Restaurant/layout/SettingsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -106,25 +104,6 @@ class _TablesPageState extends State<TablesPage>{
           "Tables"
         ),
         automaticallyImplyLeading: false,
-        // actions: <Widget>[
-        //   Padding(
-        //     padding: EdgeInsets.only(right: 20.0),
-        //     child: GestureDetector(
-        //       onTap: () {
-        //         Navigator.of(context).push(
-        //           MaterialPageRoute(
-        //             builder: (BuildContext context){
-        //               return SettingsPage();
-        //             }
-        //           )
-        //         );
-        //       },
-        //       child: Icon(
-        //         Icons.settings
-        //       ),
-        //     )
-        //   )
-        // ],
       ),
       body: buildWithOrWithoutData(),
     );

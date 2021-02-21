@@ -9,9 +9,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 class MenuPage extends StatefulWidget{
   int tableNumber;
 
-  //SlidingUpPanel slidingUpPanel = 
-
-  
   MenuPage(this.tableNumber);
 
   _MenuPageState createState() => _MenuPageState();
@@ -66,10 +63,6 @@ class _MenuPageState extends State<MenuPage>{
               padding: EdgeInsets.all(20),
               child:SlidingPanel(widget.tableNumber,panelController),
             )
-            // child: Padding(
-            //   padding: EdgeInsets.only(top: 20,left: 10,bottom: 10,right: 10),
-            //   child: SlidingPanel(tablesAmount),
-            // ),
           ),
           body: TabBarView(
             children: (){
